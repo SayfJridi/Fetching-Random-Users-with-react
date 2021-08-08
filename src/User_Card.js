@@ -39,13 +39,10 @@ export const UserCard =  () => {
   }) ; 
   
   useEffect(
-  async () => {
-const res = await  axios('https://randomuser.me/api')
+ () => {
 
- setUser({data : res.data.results[0], loading : false
-})
-console.log(res.data) ;
-  },[])
+  axios.get('https://randomuser.me/api').then(res => setUser({data : res.data.results[0], loading : false}))
+ },[])
   if (!(user.loading)) {
       return (
               <StyledCard>
@@ -69,4 +66,3 @@ console.log(res.data) ;
   
 }
 else return 'Loading' }
-
